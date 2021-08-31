@@ -6,6 +6,7 @@ class CalcController {
         this._timeEl = document.querySelector('#hora');
         this._currentDate;
         this.initialize();
+        this.initButtonsEvents();
     }
 
     // Método inicializador
@@ -28,6 +29,27 @@ class CalcController {
         });
         this.displayTime = this.currentDate.toLocaleTimeString(this._locale);
     }
+
+    //
+    initButtonsEvents() {
+        // guardar todos os botões na variável buttons
+        let buttons = document.querySelectorAll('#buttons > g, #parts > g');
+        
+
+        // buttons agora é objeto que guarda todos os botões
+        // addEventListener ouve apenas um elemento por vez
+        // forEach percorre todos os botões adicionando addEventListener
+        buttons.forEach((btn, index) => {
+            btn.addEventListener('click', (e) => {
+                //
+                console.log(btn.className.baseVal.replace("btn-", ""));
+            });
+        });
+    }
+
+
+
+    // Setters e Getters
 
     get displayTime() {
         return this._timeEl.innerHTML;
